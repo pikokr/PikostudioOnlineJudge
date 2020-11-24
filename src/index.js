@@ -1,6 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const passport = require('passport')
+const mongoose = require('mongoose')
 
 require('./util/overrideLogger')
 
@@ -32,4 +33,9 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes'))
 
-app.listen(3000, () => console.log('Listening'))
+mongoose.connect(app.config.db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    app.listen(3000, () => console.log('Listening'))
+})

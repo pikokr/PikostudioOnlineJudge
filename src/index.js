@@ -1,5 +1,6 @@
 const express = require('express')
 
+require('./util/overrideLogger')
 
 const app = express()
 

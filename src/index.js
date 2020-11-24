@@ -2,6 +2,39 @@ const express = require('express')
 const session = require('express-session')
 const passport = require('passport')
 const mongoose = require('mongoose')
+const User = require('./models/User')
+const LocalStrategy = require('passport-local').Strategy
+const pwUtil = require('./util/password')
+
+mongoose.set('useCreateIndex', true)
+
+passport.serializeUser((user, done) => {
+    done(null, user._id)
+})
+
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, res) => {
+        done(err, res)
+    })
+})
+
+passport.use(new LocalStrategy({
+    usernameField: 'id',
+    passwordField: 'pw',
+    session: true,
+    passReqToCallback: true
+}, (req, id, pw, done) => {
+    User.findOne({id}, (err, user) => {
+        if (err) return done(err)
+        if (!user) return done(null, false, {message: '유저정보가 존재하지 않습니다.'})
+        return user.comparePassword(pwUtil.encryptPassword(pw, user.salt), (err, isMatch) => {
+            if (isMatch) {
+                return done(null,user)
+            }
+            return done(null, false, {message: '유저정보가 존재하지 않습니다.'})
+        })
+    })
+}))
 
 require('./util/overrideLogger')
 

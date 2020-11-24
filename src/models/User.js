@@ -23,3 +23,5 @@ userSchema.methods.comparePw = function (pw, cb) {
         cb('password does not match')
     }
 }
+
+module.exports = mongoose.model('users', userSchema, 'users')

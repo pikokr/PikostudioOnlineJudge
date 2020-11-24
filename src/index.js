@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const passport = require('passport')
 
 require('./util/overrideLogger')
 
@@ -18,6 +19,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+app.use(passport.initialize())
+
+app.use(passport.session())
 
 app.use((req, res, next) => {
     const origRender = res.render

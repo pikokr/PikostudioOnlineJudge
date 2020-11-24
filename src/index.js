@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 
 require('./util/overrideLogger')
 
@@ -11,6 +12,12 @@ app.set('view engine', 'pug')
 app.set('views', './views')
 
 app.use('/static', express.static('./static'))
+
+app.use(session({
+    secret: app.config.secrets.session,
+    resave: false,
+    saveUninitialized: false
+}))
 
 app.use((req, res, next) => {
     const origRender = res.render

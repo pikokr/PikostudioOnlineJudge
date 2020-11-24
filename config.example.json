@@ -1,5 +1,8 @@
 {
   "site": {
     "name": "PIKOSTUDIO JUDGE"
+  },
+  "secrets": {
+    "session": ""
   }
 }

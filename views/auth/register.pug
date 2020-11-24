@@ -1,0 +1,25 @@
+extends ../layout/index
+
+block content
+    .row.justify-content-center
+        .col-sm-12.col-md-6
+            .card
+                .card-body
+                    h3.text-center 회원가입
+                    each message in messages
+                        .alert.alert-danger #{message === 'Missing credentials' ? '유저정보가 존재하지 않습니다.' : message}
+                    form(method='POST' action='/auth/login')
+                        .mb-3
+                            label(for='login-form__field-id').form-label ID
+                            input.form-control#login-form__field-id(type='text' name='id')
+                        .mb-3
+                            label(for='login-form__field-pw').form-label 비밀번호
+                            input.form-control#login-form__field-pw(type='password' name='pw')
+                        .mb-3
+                            label(for='login-form__field-pw__re').form-label 비밀번호 확인
+                            input.form-control#login-form__field-pw__re(type='password' name='pw_re')
+                        .row
+                            .col-sm-12.col-md-6
+                                button(type='submit').form-control.btn-primary 가입
+                            .col-sm-12.col-md-6
+                                a.btn.btn-primary.form-control(href='/auth/login') 로그인

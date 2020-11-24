@@ -1,4 +1,4 @@
-extends ../../layout/index
+extends ../layout/index
 
 block content
     .row.justify-content-center
@@ -15,5 +15,8 @@ block content
                         .mb-3
                             label(for='login-form__field-pw').form-label 비밀번호
                             input.form-control#login-form__field-pw(type='password' name='pw')
-                        button(type='submit').form-control.btn-primary 로그인
-                        a(href='/auth/register' style='text-decoration: none;') 가입하기
+                        .row
+                            .col-sm-12.col-md-6
+                                button(type='submit').form-control.btn-primary 로그인
+                            .col-sm-12.col-md-6
+                                a.btn.btn-primary.form-control(href='/auth/register') 가입

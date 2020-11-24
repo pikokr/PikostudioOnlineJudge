@@ -5,4 +5,4 @@ const app = express()
 
 app.set('view engine', 'pug')
 
-app.listen(3000)
+app.listen(3000, () => console.log('Listening'))

@@ -8,7 +8,7 @@ block content
                     h3.text-center 회원가입
                     each message in messages
                         .alert.alert-danger #{message === 'Missing credentials' ? '유저정보가 존재하지 않습니다.' : message}
-                    form(method='POST' action='/auth/login')
+                    form(method='POST' action='/auth/register')
                         .mb-3
                             label(for='login-form__field-id').form-label ID
                             input.form-control#login-form__field-id(type='text' name='id')

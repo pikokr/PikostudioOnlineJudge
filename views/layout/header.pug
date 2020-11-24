@@ -1,3 +1,9 @@
 nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
     .container-fluid
         a.navbar-brand(href='/') #{req.app.config.site.name}
+        .navbar-nav.ml-auto
+            if req.user
+                |로그아웃
+            else
+                li.nav-item
+                    a.nav-link(href='/auth/login') 로그인

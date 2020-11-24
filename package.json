@@ -14,6 +14,6 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "dev": "nodemon src"
+    "dev": "nodemon --ignore static src"
   }
 }

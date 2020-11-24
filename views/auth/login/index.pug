@@ -1,0 +1,16 @@
+extends ../../layout/index
+
+block content
+    .row.justify-content-center
+        .col-sm-12.col-md-6
+            .card
+                .card-body
+                    h3.text-center 로그인
+                    form(method='POST' action='/auth/login')
+                        .mb-3
+                            label(for='login-form__field-id').form-label ID
+                            input.form-control#login-form__field-id(type='text' name='id')
+                        .mb-3
+                            label(for='login-form__field-pw').form-label 비밀번호
+                            input.form-control#login-form__field-pw(type='password' name='pw')
+                        button(type='submit').form-control.btn-primary 로그인

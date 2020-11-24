@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const User = require('./models/User')
 const LocalStrategy = require('passport-local').Strategy
 const pwUtil = require('./util/password')
+const flash = require('connect-flash')
 
 mongoose.set('useCreateIndex', true)
 
@@ -48,11 +49,15 @@ app.set('views', './views')
 
 app.use('/static', express.static('./static'))
 
+app.use(express.urlencoded({extended: true}))
+
 app.use(session({
     secret: app.config.secrets.session,
     resave: false,
     saveUninitialized: false
 }))
+
+app.use(flash())
 
 app.use(passport.initialize())
 

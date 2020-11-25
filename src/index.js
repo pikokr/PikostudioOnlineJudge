@@ -28,7 +28,7 @@ passport.use(new LocalStrategy({
     User.findOne({id}, (err, user) => {
         if (err) return done(err)
         if (!user) return done(null, false, {message: '유저정보가 존재하지 않습니다.'})
-        return user.comparePassword(pwUtil.encryptPassword(pw, user.salt), (err, isMatch) => {
+        return user.comparePw(pwUtil.encryptPassword(pw, user.salt), (err, isMatch) => {
             if (isMatch) {
                 return done(null,user)
             }

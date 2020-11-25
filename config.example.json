@@ -1,6 +1,7 @@
 {
   "site": {
-    "name": "PIKOSTUDIO JUDGE"
+    "name": "PIKOSTUDIO JUDGE",
+    "description": "피코스튜디오 온라인 저지"
   },
   "secrets": {
     "session": ""

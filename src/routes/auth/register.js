@@ -44,9 +44,7 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    res.render('auth/register', {
-        messages: req.flash('error')
-    })
+    res.render('auth/register')
 })
 
 module.exports = router

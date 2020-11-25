@@ -9,9 +9,7 @@ router.post('/', passport.authenticate('local', {
 })
 
 router.get('/', (req, res) => {
-    res.render('auth/login', {
-        messages: req.flash('error')
-    })
+    res.render('auth/login')
 })
 
 module.exports = router

@@ -6,6 +6,8 @@ const User = require('./models/User')
 const LocalStrategy = require('passport-local').Strategy
 const pwUtil = require('./util/password')
 const flash = require('connect-flash')
+const redis = require('./redis')
+const RedisStore = require('connect-redis')(session)
 
 mongoose.set('useCreateIndex', true)
 
@@ -52,9 +54,12 @@ app.use('/static', express.static('./static'))
 app.use(express.urlencoded({extended: true}))
 
 app.use(session({
-    secret: app.config.secrets.session,
+    store: new RedisStore({
+        client: redis
+    }),
+    saveUninitialized: false,
     resave: false,
-    saveUninitialized: false
+    secret: app.config.secrets.session
 }))
 
 app.use(flash())

@@ -1,10 +1,24 @@
 nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
     .container-fluid
         a.navbar-brand(href='/') #{req.app.config.site.name}
-        .navbar-nav.ml-auto
-            if req.user
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#nav-content')
+            span.navbar-toggler-icon
+        .collapse.navbar-collapse#nav-content
+            .navbar-nav.mr-auto
                 li.nav-item
-                    a.nav-link(href='/auth/logout') 로그아웃
-            else
-                li.nav-item
-                    a.nav-link(href='/auth/login') 로그인
+                    a.nav-link(href='/problems') 문제
+            .navbar-nav.ml-auto
+                if req.user
+                    li.nav-item.dropdown
+                        a.nav-link.dropdown-toggle(data-toggle='dropdown') #{req.user.id}
+                        ul.dropdown-menu.dropdown-menu-right
+                            li
+                                a.dropdown-item(href=`/user/${req.user.id}`) 프로필
+                            if req.user.admin
+                                li
+                                    a.dropdown-item(href=`/admin`) 관리
+                            li
+                                a.dropdown-item(href=`/auth/logout`) 로그아웃
+                else
+                    li.nav-item
+                        a.nav-link(href='/auth/login') 로그인

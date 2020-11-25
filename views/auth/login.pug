@@ -6,7 +6,9 @@ block content
             .card
                 .card-body
                     h3.text-center 로그인
-                    each message in messages
+                    each message in req.flash('success')
+                        .alert.alert-success #{message}
+                    each message in req.flash('error')
                         .alert.alert-danger #{message === 'Missing credentials' ? '유저정보가 존재하지 않습니다.' : message}
                     form(method='POST' action='/auth/login')
                         .mb-3

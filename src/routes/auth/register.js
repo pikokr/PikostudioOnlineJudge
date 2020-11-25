@@ -1,7 +1,8 @@
 const pwUtil = require('../../util/password')
 const router = require('express').Router()
+const User = require('../../models/User')
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     let err = false
     if (!req.body.id) {
         req.flash('error', '아이디 필드는 필수입니다.')
@@ -21,9 +22,25 @@ router.post('/', (req, res) => {
         return res.redirect('/auth/register')
     }
 
+    if (await User.findOne({id: req.body.id})) {
+        req.flash('error', '해당 아이디를 누가 이미 사용하고 있어요!')
+        return res.redirect('/auth/register')
+    }
+
     const salt = pwUtil.generateSalt()
 
-    console.log(salt)
+    const user = new User()
+
+    user.id = req.body.id
+
+    user.password = pwUtil.encryptPassword(req.body.pw, salt)
+
+    user.salt = salt
+
+    await user.save()
+
+    req.flash('success', '가입이 완료되었어요! 이제 로그인 해주세요!')
+    res.redirect('/auth/login')
 })
 
 router.get('/', (req, res) => {

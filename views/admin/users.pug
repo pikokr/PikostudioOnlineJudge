@@ -4,4 +4,9 @@ block title
     | 유저 목록
 
 block in
-    |관리자 페이지!
+    .row
+        each user in users
+            .col-sm-12.col-md-4
+                a.card(style='text-decoration:none;' href=`/admin/users/${user.id}`)
+                    .card-body
+                        | #{user.id}

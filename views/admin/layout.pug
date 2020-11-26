@@ -3,7 +3,6 @@ extends ../layout/index
 block content
     // 메뉴
     nav.nav.nav-pills.flex-column
-        |#{req.baseUrl}
         each r in [{link: '/admin', match: '', label: '메인'}, {link: '/admin/users', match: '/users', label: '유저 관리'}, {link: '/admin/problems', match: '/problems', label: '문제 관리'}]
             a(class=`flex-sm-fill text-sm-center nav-link ${req.baseUrl === `/admin${r.match}` ? 'active' : ''}` href=r.link) #{r.label}
     // 내용

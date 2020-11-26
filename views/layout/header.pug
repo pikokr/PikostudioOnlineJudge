@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
             .navbar-nav.ml-auto
                 if req.user
                     li.nav-item.dropdown
-                        a.nav-link.dropdown-toggle(data-toggle='dropdown') #{req.user.id}
+                        a.nav-link.dropdown-toggle(data-toggle='dropdown' href='#') #{req.user.id}
                         ul.dropdown-menu.dropdown-menu-right
                             li
                                 a.dropdown-item(href=`/user/${req.user.id}`) 프로필

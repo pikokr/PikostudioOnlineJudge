@@ -8,6 +8,7 @@ const pwUtil = require('./util/password')
 const flash = require('connect-flash')
 const redis = require('./redis')
 const RedisStore = require('connect-redis')(session)
+const compression = require('compression')
 
 mongoose.set('useCreateIndex', true)
 
@@ -48,6 +49,8 @@ app.config = require('../config.json')
 app.set('view engine', 'pug')
 
 app.set('views', './views')
+
+app.use(compression())
 
 app.use('/static', express.static('./static'))
 

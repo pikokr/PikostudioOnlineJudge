@@ -4,9 +4,16 @@ block title
     | 유저 목록
 
 block in
-    .row
-        each user in users
-            .col-sm-12.col-md-4
-                a.card(style='text-decoration:none;' href=`/admin/users/${user.id}`)
-                    .card-body
-                        | #{user.id}
+    table.table
+        thead
+            tr
+                th ID
+                th 관리자 여부
+                th 관리
+        tbody
+            each user in users
+                tr
+                    td #{user.id}
+                    td #{user.admin ? '관리자' : '유저'}
+                    td
+                        a(href=`/admin/users/${user.id}` style='text-decoration: none;color: #000;') 관리

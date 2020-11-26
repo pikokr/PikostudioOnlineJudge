@@ -2,3 +2,13 @@ extends ../layout
 
 block title
     |유저 관리 - #{user.id}
+block in
+    .row
+        form(action=`/admin/users/${user.id}` method='post')
+            .col-sm-12
+                label(for='user_id') ID
+                input(type='text' disabled value=user.id)#user_id.form-control
+                label.form-check.form-check-label
+                    input(type='checkbox').form-check-input
+                    | 관리자
+            button(type='submit').form-control 저장

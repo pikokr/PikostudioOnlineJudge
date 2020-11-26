@@ -7,4 +7,12 @@ router.get('/', async (req, res) => {
     })
 })
 
+router.get('/:id', async (req, res, next) => {
+    const u = await Users.findOne({id: req.params.id})
+    if (!u) return next()
+    res.render('admin/users/view', {
+        user: u
+    })
+})
+
 module.exports = router

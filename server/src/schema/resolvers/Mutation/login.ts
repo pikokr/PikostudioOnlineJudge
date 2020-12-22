@@ -1,1 +1,1 @@
-export default (source, { id, password }) => {};
+export default (source, { id, password }) => {}

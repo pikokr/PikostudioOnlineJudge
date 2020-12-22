@@ -1,5 +1,5 @@
-import { IResolvers } from "graphql-tools";
+import { IResolvers } from "graphql-tools"
 
 export default {
   test: () => "asdf",
-} as IResolvers;
+} as IResolvers

@@ -1,9 +1,5 @@
-import gql from "graphql-tag";
+import Query from './Query'
 
 export default [
-    gql`
-    type Query {
-        test: String
-    }
-    `
+    Query
 ]

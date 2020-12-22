@@ -5,11 +5,12 @@ import { generate } from '../../../util/password'
 
 export default (async (source, { id, password }) => {
   let user = await User.findOne({ id })
-  if (user) throw new ApolloError('유저가 이미 존재합니다')
+  if (user)
+    throw new ApolloError('유저가 이미 존재합니다', 'ERR_USER_ALREADY_EXISTS')
   user = new User()
   user.id = id
   user.salt = crypto.randomBytes(16).toString('base64')
-  user.password = generate(user.salt, password)
+  user.password = generate(password, user.salt)
   await user.save()
   return true
 }) as IFieldResolver<any, any>

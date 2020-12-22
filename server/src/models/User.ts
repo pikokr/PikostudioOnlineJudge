@@ -2,6 +2,9 @@ import mongoose, { Document } from 'mongoose'
 
 interface UserType extends Document {
   id: string
+  password: string
+  salt: string
+  admin: boolean
 }
 
 const schema = new mongoose.Schema({

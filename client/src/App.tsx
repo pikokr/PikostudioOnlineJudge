@@ -1,11 +1,13 @@
 import React from 'react'
-import { Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import HomePage from './views/Home'
 
 const App = () => {
   return (
     <>
-      App
-      <Switch></Switch>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
     </>
   )
 }

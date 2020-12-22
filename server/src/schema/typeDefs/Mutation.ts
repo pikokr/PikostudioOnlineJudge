@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export default gql`
-type Mutation {
+  type Mutation {
     login(id: String!, password: String!): String
-}
-`
+  }
+`;

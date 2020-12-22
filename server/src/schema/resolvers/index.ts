@@ -1,6 +1,6 @@
 import { IResolvers } from "graphql-tools";
-import Query from './Query'
+import Query from "./Query";
 
 export default {
-    Query
-} as IResolvers
+  Query,
+} as IResolvers;

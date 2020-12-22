@@ -1,8 +1,11 @@
 import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import LoginModal from './LoginModal'
 
 const Header = () => {
+  const [login, setLogin] = React.useState(false)
+
   return (
     <>
       <Navbar bg="primary" variant="dark" expand="lg">
@@ -18,11 +21,12 @@ const Header = () => {
           </Nav>
           <Nav className="ml-auto">
             <Nav.Item>
-              <Nav.Link>로그인</Nav.Link>
+              <Nav.Link onClick={() => setLogin(true)}>로그인</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <LoginModal open={login} close={() => setLogin(false)} />
     </>
   )
 }

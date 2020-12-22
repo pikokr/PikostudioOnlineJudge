@@ -17,6 +17,10 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 export default mongoose.model<UserType>('User', schema, 'users')

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
+import apollo from '../../apollo'
+import { gql } from '@apollo/client'
 
 const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
   const [id, setID] = React.useState('')
@@ -9,8 +11,17 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
     <Modal backdrop="static" keyboard={false} onHide={close} show={open}>
       <Modal.Header closeButton>로그인</Modal.Header>
       <Form
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault()
+          const data = await apollo.mutate({
+            mutation: gql`
+              mutation($id: String!, $password: String!) {
+                login(id: $id, password: $password)
+              }
+            `,
+            variables: { id, password: pw },
+          })
+          console.log(data.data)
         }}
       >
         <Modal.Body>

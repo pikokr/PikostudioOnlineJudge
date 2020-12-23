@@ -11,7 +11,6 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
       <Form
         onSubmit={(e) => {
           e.preventDefault()
-          console.log('login')
         }}
       >
         <Modal.Body>

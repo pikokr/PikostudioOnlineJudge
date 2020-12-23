@@ -1,11 +1,11 @@
 import React from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap'
 
 const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
   return (
     <Modal backdrop="static" keyboard={false} onHide={close} show={open}>
       <Modal.Header closeButton>로그인</Modal.Header>
-      <form
+      <Form
         onSubmit={(e) => {
           e.preventDefault()
           console.log('login')
@@ -20,7 +20,7 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
             로그인
           </Button>
         </Modal.Footer>
-      </form>
+      </Form>
     </Modal>
   )
 }

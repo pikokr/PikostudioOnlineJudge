@@ -1,12 +1,16 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+import { ApolloProvider } from '@apollo/client'
+import apollo from './apollo'
 
 const Root: React.FC = () => {
   return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ApolloProvider client={apollo}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApolloProvider>
   )
 }
 

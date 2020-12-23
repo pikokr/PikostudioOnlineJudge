@@ -21,7 +21,9 @@ const Header = () => {
         <Navbar.Collapse>
           <Nav className="mr-auto">
             <Nav.Item>
-              <Nav.Link>문제</Nav.Link>
+              <Nav.Link as={Link} to="/problems">
+                문제
+              </Nav.Link>
             </Nav.Item>
           </Nav>
           <Nav className="ml-auto">

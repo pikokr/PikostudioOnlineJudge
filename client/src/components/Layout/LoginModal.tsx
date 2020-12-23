@@ -27,8 +27,8 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
             localStorage.setItem('token', data.data.login)
             setID('')
             setPW('')
-            await refetch()
             close()
+            window.location.reload()
           }
         }}
       >

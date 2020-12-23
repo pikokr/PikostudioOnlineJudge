@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 const server = new ApolloServer({
   schema,
-  context: ctx => {
+  context: (ctx) => {
     let user = null
     if (ctx.req.headers.authorization) {
       let token = ctx.req.headers.authorization

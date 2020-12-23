@@ -9,5 +9,5 @@ export default (async (source, { id, password }) => {
   if (!user) return null
   const pw = generate(password, user.salt)
   if (pw !== user.password) return null
-  return jwt.sign({id: user.id, createdAt: Date.now()}, config.jwtSecret)
+  return jwt.sign({ id: user.id, createdAt: Date.now() }, config.jwtSecret)
 }) as IFieldResolver<any, any>

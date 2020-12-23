@@ -1,4 +1,3 @@
 import { IResolvers } from 'graphql-tools'
 
-export default {
-} as IResolvers
+export default {} as IResolvers

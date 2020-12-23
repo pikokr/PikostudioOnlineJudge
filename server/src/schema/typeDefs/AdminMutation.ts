@@ -6,6 +6,6 @@ export default gql`
     }
 
     type AdminProblemsMutation {
-        create(id: String!, description: String!, testCases: [[String!]!]!): Boolean!
+        create(id: String!, description: String!, testCases: [[String!]!]!, examples: [[String!]!]!): Boolean!
     }
 `

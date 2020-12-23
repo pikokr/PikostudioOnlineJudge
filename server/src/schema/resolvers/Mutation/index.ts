@@ -5,4 +5,5 @@ import register from './register'
 export default {
   login,
   register,
+  admin: (source, args, context) => context.user?.admin && {}
 } as IResolvers

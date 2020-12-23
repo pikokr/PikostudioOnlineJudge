@@ -4,17 +4,19 @@ import config from '../config.json'
 import schema from './schema'
 import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
+import User from './models/User'
 
 const server = new ApolloServer({
   schema,
-  context: (ctx) => {
+  context: async (ctx) => {
     let user = null
     if (ctx.req.headers.authorization) {
       let token = ctx.req.headers.authorization
       if (token.startsWith('Bearer ')) {
         token = ctx.req.headers.authorization.slice('Bearer '.length)
         try {
-          user = jwt.verify(token, config.jwtSecret)
+          const data = jwt.verify(token, config.jwtSecret)
+          user = await User.findOne({id: (data as any).id}) || null
         } catch (e) {
           user = null
         }

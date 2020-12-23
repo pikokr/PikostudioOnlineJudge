@@ -15,7 +15,6 @@ const server = new ApolloServer({
         token = ctx.req.headers.authorization.slice('Bearer '.length)
         try {
           user = jwt.verify(token, config.jwtSecret)
-          console.log(user)
         } catch (e) {
           user = null
         }

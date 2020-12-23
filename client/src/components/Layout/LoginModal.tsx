@@ -1,11 +1,13 @@
 import React from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import apollo from '../../apollo'
-import { gql } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client'
+import GET_CURRENT_USER from '../../queries/GET_CURRENT_USER'
 
 const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
   const [id, setID] = React.useState('')
   const [pw, setPW] = React.useState('')
+  const { refetch } = useQuery(GET_CURRENT_USER)
 
   return (
     <Modal backdrop="static" keyboard={false} onHide={close} show={open}>
@@ -25,6 +27,7 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
             localStorage.setItem('token', data.data.login)
             setID('')
             setPW('')
+            await refetch()
             close()
           }
         }}

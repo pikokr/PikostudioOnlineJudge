@@ -21,7 +21,12 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
             `,
             variables: { id, password: pw },
           })
-          console.log(data.data)
+          if (data.data.login) {
+            localStorage.setItem('token', data.data.login)
+            setID('')
+            setPW('')
+            close()
+          }
         }}
       >
         <Modal.Body>

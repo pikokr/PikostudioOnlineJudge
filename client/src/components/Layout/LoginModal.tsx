@@ -11,7 +11,14 @@ const LoginModal = ({ open, close }: { open: boolean; close: () => void }) => {
           console.log('login')
         }}
       >
-        <Modal.Body>로그인 폼</Modal.Body>
+        <Modal.Body>
+          <Form.Group>
+            <Form.Control type="text" placeholder="아이디" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control type="password" placeholder="비밀번호" />
+          </Form.Group>
+        </Modal.Body>
         <Modal.Footer>
           <Button onClick={close} variant="danger">
             취소

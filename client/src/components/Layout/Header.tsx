@@ -34,7 +34,11 @@ const Header = () => {
                 </Nav.Link>
               </Nav.Item>
             ) : user.data && user.data.me && user.data.me.user.id ? (
-              <NavDropdown id="dropdowns__user_menu_logged_in" title={u.id}>
+              <NavDropdown
+                alignRight
+                id="dropdowns__user_menu_logged_in"
+                title={u.id}
+              >
                 <NavDropdown.Item
                   onClick={async () => {
                     localStorage.removeItem('token')

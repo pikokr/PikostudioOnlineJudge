@@ -1,3 +1,6 @@
 import { IResolvers } from 'graphql-tools'
+import me from './me'
 
-export default {} as IResolvers
+export default {
+  me
+} as IResolvers

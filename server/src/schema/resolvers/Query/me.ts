@@ -1,8 +1,8 @@
-import { IFieldResolver } from "graphql-tools";
+import { IFieldResolver } from 'graphql-tools'
 
 export default (async (source, args, ctx) => {
   if (!ctx.user) return null
   return {
-    user: ctx.user
+    user: ctx.user,
   }
-}) as IFieldResolver<any,any>
+}) as IFieldResolver<any, any>

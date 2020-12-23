@@ -1,10 +1,13 @@
 import React from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import LoginModal from './LoginModal'
+import { useQuery } from '@apollo/client'
+import GET_CURRENT_USER from '../../queries/GET_CURRENT_USER'
 
 const Header = () => {
   const [login, setLogin] = React.useState(false)
+  const user = useQuery(GET_CURRENT_USER)
 
   return (
     <>
@@ -20,9 +23,17 @@ const Header = () => {
             </Nav.Item>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Item>
-              <Nav.Link onClick={() => setLogin(true)}>로그인</Nav.Link>
-            </Nav.Item>
+            {user.loading ? (
+              <Nav.Item>
+                <Nav.Link>
+                  <Spinner animation="border" />
+                </Nav.Link>
+              </Nav.Item>
+            ) : user.data && user.data.me && user.data.me.user.id ? null : (
+              <Nav.Item>
+                <Nav.Link onClick={() => setLogin(true)}>로그인</Nav.Link>
+              </Nav.Item>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -1,11 +1,11 @@
 import gql from 'graphql-tag'
 
 export default gql`
-type AdminMutation {
-    problems: AdminProblems!
-}
+    type AdminMutation {
+        problems: AdminProblemsMutation!
+    }
 
-type AdminProblems {
-    create(id: String!, description: String!, testCases: [[String!]!]!): Boolean!
-}
+    type AdminProblemsMutation {
+        create(id: String!, description: String!, testCases: [[String!]!]!): Boolean!
+    }
 `

@@ -2,7 +2,7 @@ import { IFieldResolver } from 'graphql-tools'
 import { ApolloError } from 'apollo-server'
 import Problem from '../../../models/Problem'
 
-export default (async (source, { id, description, examples, testCases }) => {
+export default (async (source, { id, description, examples, testCases, title }) => {
   if (examples.find((r: any[]) => r.length !== 2))
     throw new ApolloError('examples 인자값이 잘못되었습니다', 'ERR_INVALID_ARG')
   if (testCases.find((r: any[]) => r.length !== 2))
@@ -15,7 +15,7 @@ export default (async (source, { id, description, examples, testCases }) => {
       '문제가 이미 존재합니다',
       'ERR_PROBLEM_ALREADY_EXISTS',
     )
-  const problem = new Problem({id, description, examples, testCases})
+  const problem = new Problem({id, description, examples, testCases, title})
 
   await problem.save()
 

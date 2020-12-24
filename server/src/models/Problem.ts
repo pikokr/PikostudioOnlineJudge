@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose'
 interface ProblemType extends Document {
   id: string
   description: string
+  title: string
   testCases: {
     input: string
     output: string
@@ -31,6 +32,10 @@ const schema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  title: {
+    type: String,
+    required: true
+  }
 })
 
 export default mongoose.model<ProblemType>('Problems', schema, 'problem')

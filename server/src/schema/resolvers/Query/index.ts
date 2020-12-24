@@ -4,5 +4,5 @@ import problems from './problems'
 
 export default {
   me,
-  problems
+  problems,
 } as IResolvers

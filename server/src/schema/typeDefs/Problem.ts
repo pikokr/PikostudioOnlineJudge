@@ -4,7 +4,7 @@ export default gql`
   type Problem {
     id: String!
     examples: [IO!]!
-      title: String!
+    title: String!
   }
   type IO {
     input: String!

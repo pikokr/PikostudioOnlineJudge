@@ -34,8 +34,8 @@ const schema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 
 export default mongoose.model<ProblemType>('Problems', schema, 'problem')

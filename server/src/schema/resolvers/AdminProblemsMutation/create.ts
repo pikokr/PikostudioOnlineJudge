@@ -15,5 +15,9 @@ export default (async (source, { id, description, examples, testCases }) => {
       '문제가 이미 존재합니다',
       'ERR_PROBLEM_ALREADY_EXISTS',
     )
-  return false
+  const problem = new Problem({id, description, examples, testCases})
+
+  await problem.save()
+
+  return true
 }) as IFieldResolver<any, any>

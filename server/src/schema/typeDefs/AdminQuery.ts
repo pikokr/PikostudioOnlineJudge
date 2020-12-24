@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-type AdminQuery {
+  type AdminQuery {
     asdf: String
-}
+  }
 `

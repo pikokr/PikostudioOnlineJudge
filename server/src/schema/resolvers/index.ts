@@ -8,5 +8,5 @@ export default {
   Query,
   Mutation,
   AdminMutation,
-  AdminProblemsMutation
+  AdminProblemsMutation,
 } as IResolvers

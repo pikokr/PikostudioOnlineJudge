@@ -2,5 +2,5 @@ import { IResolvers } from 'graphql-tools'
 import create from './create'
 
 export default {
-  create
+  create,
 } as IResolvers

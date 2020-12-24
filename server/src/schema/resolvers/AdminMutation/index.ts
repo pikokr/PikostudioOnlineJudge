@@ -1,5 +1,5 @@
 import { IResolvers } from 'graphql-tools'
 
 export default {
-  problems: () => ({})
+  problems: () => ({}),
 } as IResolvers

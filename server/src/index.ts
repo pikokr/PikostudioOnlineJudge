@@ -16,7 +16,7 @@ const server = new ApolloServer({
         token = ctx.req.headers.authorization.slice('Bearer '.length)
         try {
           const data = jwt.verify(token, config.jwtSecret)
-          user = await User.findOne({id: (data as any).id}) || null
+          user = (await User.findOne({ id: (data as any).id })) || null
         } catch (e) {
           user = null
         }
